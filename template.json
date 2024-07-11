@@ -1,0 +1,36 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "Kirubel Girma BirruName": {
+            "type": "string",
+            "minLength": 1
+        },
+        "Kirubel Girma BirruSku": {
+            "type": "string",
+            "allowedValues": [
+                "Free",
+                "Jupiter",
+                "Saturn",
+                "Venus"
+            ],
+            "defaultValue": "Free"
+        }
+    },
+    "resources": [
+        {
+            "name": "[parameters('Kirubel Girma BirruName')]",
+            "type": "SuccessBricks.ClearDB/databases",
+            "location": "[resourceGroup().location]",
+            "apiVersion": "2014-04-01",
+            "plan": {
+                "name": "[parameters('Kirubel Girma BirruSku')]"
+            },
+            "dependsOn": [],
+            "tags": {
+                "provision_source": "RMS",
+                "displayName": "Kirubel Girma Birru"
+            }
+        }
+    ]
+}
